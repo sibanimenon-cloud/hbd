@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Babygirl 💖</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    overflow:hidden;
+    background:linear-gradient(to bottom,#ffd6e7,#fff0f5);
+    color:#ff4f87;
+}
+
+/* Pages */
+.page{
+    width:100%;
+    height:100vh;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+}
+
+.active{
+    display:flex;
+}
+
+h1{
+    font-size:2.2rem;
+    margin-bottom:15px;
+}
+
+p{
+    line-height:1.8;
+    font-size:18px;
+}
+
+/* Buttons */
+button{
+    padding:14px 30px;
+    border:none;
+    border-radius:40px;
+    background:#ff69b4;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    margin-top:20px;
+    transition:.3s;
+    box-shadow:0 5px 15px rgba(255,105,180,.3);
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+/* Candle */
+.candle{
+    font-size:120px;
+}
+
+/* Cake */
+.cake{
+    font-size:130px;
+    animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+/* Moving Button */
+#movingBtn{
+    position:absolute;
+}
+
+/* Gallery */
+.gallery{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+    max-width:700px;
+    margin-top:20px;
+}
+
+.gallery img{
+    width:150px;
+    height:220px;
+    object-fit:cover;
+    border-radius:20px;
+    border:5px solid white;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+/* Message Box */
+.message-box{
+    background:white;
+    padding:25px;
+    border-radius:25px;
+    max-width:800px;
+    max-height:75vh;
+    overflow-y:auto;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
+
+/* Hearts */
+.heart{
+    position:absolute;
+    color:pink;
+    animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mp3">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+    <h1>🎂 Happy Birthday Babygirl 💖</h1>
+    <p>A little surprise for the prettiest girl ✨</p>
+
+    <button onclick="startSurprise()">
+        Start Surprise 💕
+    </button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+    <div class="candle" id="candle">
+        🕯️
+    </div>
+
+    <h1>Make A Wish 💫</h1>
+
+    <button onclick="blowCandle()">
+        Blow Candle 💨
+    </button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+    <div class="cake">
+        🎂
+    </div>
+
+    <h1>Your Cake Is Ready 💕</h1>
+
+    <button onclick="cutCake()">
+        Cut The Cake 🍰
+    </button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+    <h1>Want To See Something Special? 😏</h1>
+
+    <button id="movingBtn"
+    onclick="showPhotos()">
+        See Photos 📸
+    </button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="page5">
+    <h1>Our Cute Memories 💖</h1>
+
+    <div class="gallery">
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+        <img src="photo4.jpg">
+        <img src="photo5.jpg">
+    </div>
+
+    <button onclick="showMessage()">
+        Read Something 💌
+    </button>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page" id="page6">
+
+<div class="message-box">
+
+<h1>For You 💖</h1>
+
+<p>
+Happiest birthday to you babygurll 💖
+<br><br>
+
+You're my best part bolne ki zarurat hi nahi hai,
+you already know that 🤍
+<br><br>
+
+Baby, I know merese bohot galti hui hai.
+Gusse me kabhi kabhi bohot ulta sidha suna deta hu apko.
+Kal hi ek ladai solve hui hai and genuinely sorry for thatt 🥹
+Huhh, leave this topic...
+<br><br>
+
+Finally, this is your first birthday with me.
+Although you're not with me,
+but ya, it's your first birthday when I am with you babyy 💕
+<br><br>
+
+Ap sath nahi ho warna main is din ko bohot special banane ka try karta.
+Khair ap ho nahi,
+hopefully next time hum log sath me celebrate krenge ✨
+<br><br>
+
+And haan...
+HAPPY BIRTHDAYYY 🥳
+Make your day special.
+<br><br>
+
+I LOVE YOUU SOO MUCH BABYY ♥️
+<br>
+
+I'm always with youuu 🤍
+</p>
+
+<button onclick="restartWebsite()">
+Replay Surprise 💗
+</button>
+
+</div>
+</div>
+
+<script>
+
+/* Switch Pages */
+function switchPage(current,next){
+
+document.getElementById(current)
+.classList.remove("active");
+
+document.getElementById(next)
+.classList.add("active");
+
+}
+
+/* Start Website */
+function startSurprise(){
+
+document.getElementById("bgMusic")
+.play();
+
+switchPage("page1","page2");
+
+}
+
+/* Blow Candle */
+function blowCandle(){
+
+document.getElementById("candle")
+.innerHTML="💨";
+
+setTimeout(()=>{
+switchPage("page2","page3");
+},1200);
+
+}
+
+/* Cut Cake */
+function cutCake(){
+
+alert("Cake Cut Successfully 🎂💕");
+
+switchPage("page3","page4");
+
+}
+
+/* Moving Button */
+let moveCount=0;
+
+document.addEventListener(
+"mousemove",
+function(e){
+
+let page4 =
+document.getElementById("page4");
+
+if(
+page4.classList.contains("active")
+&& moveCount < 6
+){
+
+let btn =
+document.getElementById("movingBtn");
+
+let rect =
+btn.getBoundingClientRect();
+
+let distance =
+Math.sqrt(
+
+Math.pow(
+e.clientX -
+(rect.left + rect.width/2),
+2
+)
+
++
+
+Math.pow(
+e.clientY -
+(rect.top + rect.height/2),
+2
+)
+
+);
+
+if(distance < 100){
+
+btn.style.left =
+Math.max(
+20,
+Math.random() *
+(window.innerWidth - 180)
+)
++ "px";
+
+btn.style.top =
+Math.max(
+100,
+Math.random() *
+(window.innerHeight - 180)
+)
++ "px";
+
+moveCount++;
+
+}
+
+}
+
+}
+);
+
+/* Show Photos */
+function showPhotos(){
+
+switchPage(
+"page4",
+"page5"
+);
+
+}
+
+/* Show Message */
+function showMessage(){
+
+switchPage(
+"page5",
+"page6"
+);
+
+}
+
+/* Restart */
+function restartWebsite(){
+location.reload();
+}
+
+/* Floating Hearts */
+function createHeart(){
+
+const heart =
+document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML = "💖";
+
+heart.style.left =
+Math.random()*100
++ "vw";
+
+heart.style.fontSize =
+(Math.random()*20 + 15)
++ "px";
+
+document.body
+.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+}
+
+setInterval(
+createHeart,
+500
+);
+
+</script>
+
+</body>
+</html>
