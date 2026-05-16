@@ -194,11 +194,11 @@ button:hover{
     <h1>Our Cute Memories 💖</h1>
 
     <div class="gallery">
-        <img src="photo1.jpg">
-        <img src="photo2.jpg">
-        <img src="photo3.jpg">
-        <img src="photo4.jpg">
-        <img src="photo5.jpg">
+        <img src="photo1.jpeg">
+        <img src="photo2.png">
+        <img src="photo3.png">
+        <img src="photo4.png">
+        <img src="photo5.png">
     </div>
 
     <button onclick="showMessage()">
@@ -299,8 +299,18 @@ switchPage("page3","page4");
 
 }
 
-/* Moving Button */
-let moveCount=0;
+/* Moving Button Fixed */
+let moveCount = 0;
+
+const positions = [
+{left:"10%", top:"20%"},
+{left:"70%", top:"20%"},
+{left:"20%", top:"60%"},
+{left:"75%", top:"65%"},
+{left:"45%", top:"35%"},
+{left:"15%", top:"75%"},
+{left:"55%", top:"50%"}
+];
 
 document.addEventListener(
 "mousemove",
@@ -311,7 +321,7 @@ document.getElementById("page4");
 
 if(
 page4.classList.contains("active")
-&& moveCount < 6
+&& moveCount < 7
 ){
 
 let btn =
@@ -322,50 +332,30 @@ btn.getBoundingClientRect();
 
 let distance =
 Math.sqrt(
-
 Math.pow(
 e.clientX -
-(rect.left + rect.width/2),
-2
+(rect.left + rect.width/2),2
 )
-
 +
-
 Math.pow(
 e.clientY -
-(rect.top + rect.height/2),
-2
+(rect.top + rect.height/2),2
 )
-
 );
 
 if(distance < 100){
 
 btn.style.left =
-Math.max(
-20,
-Math.random() *
-(window.innerWidth - 180)
-)
-+ "px";
+positions[moveCount].left;
 
 btn.style.top =
-Math.max(
-100,
-Math.random() *
-(window.innerHeight - 180)
-)
-+ "px";
+positions[moveCount].top;
 
 moveCount++;
-
 }
 
 }
-
-}
-);
-
+});
 /* Show Photos */
 function showPhotos(){
 
